@@ -1,12 +1,12 @@
 # generals.io Node.js Bot Example
 
-This is an example of a basic Javascript implementation of a bot for [generals.io](http://generals.io). Read the tutorial associated with this bot at [dev.generals.io/api#tutorial](http://dev.generals.io/api#tutorial).
+This repo forks the nodejs [generals.io](http://generals.io) bot linked on their tutorial [tutorial](http://dev.generals.io/api#tutorial).
 
 ## Usage
 
 ```
-$ git clone https://github.com/vzhou842/generals.io-Node.js-Bot-example.git
-$ cd generals.io-Node.js-Bot-example
+$ git clone git@github.com:mossman-drake/generalsio_bot.git
+$ cd generalsio_bot
 $ npm install
-$ node main.js
+$ node main.js <custom_room_id> <optional_custom_user_config>
 ```
