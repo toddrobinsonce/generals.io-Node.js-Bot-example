@@ -10,3 +10,6 @@ $ cd generalsio_bot
 $ npm install
 $ node main.js <custom_room_id> <optional_custom_user_config>
 ```
+
+## Config
+Save `username` and `user_id` into a json file and pass in the path at the command line
