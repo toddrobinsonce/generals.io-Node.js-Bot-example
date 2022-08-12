@@ -4,6 +4,8 @@ var fs = require('fs');
 let custom_game_id = undefined;
 let user_config =  undefined;
 let user_config_filename = undefined;
+let username = 'Anonymous';
+
 if (process.argv.length > 2) {
 	custom_game_id = process.argv[2]
 } else {
@@ -17,6 +19,7 @@ if (process.argv.length > 3) {
 		if (!('user_id' in user_config)) { throw 'user_config must contain user_id'; }
 		console.log(`Using config ${user_config_filename}.`);
 		console.log(`Playing as ${user_config['username']}.`);
+		username = user_config['username'];
 	} catch {
 		console.log(`Error reading from user_config ${user_config_filename}`);
 		user_config = undefined;
@@ -226,10 +229,19 @@ socket.on('game_update', function(data) {
 	}
 });
 
-function leaveGame() {
+function leaveLostGame() {
+	leaveGame('lost');
+}
+
+function leaveWonGame() {
+	leaveGame('won');
+}
+
+function leaveGame(status) {
+	console.log(`${username} has ${status}`)
 	socket.emit('leave_game');
 }
 
-socket.on('game_lost', leaveGame);
+socket.on('game_lost', leaveLostGame);
 
-socket.on('game_won', leaveGame);
+socket.on('game_won', leaveWonGame);
